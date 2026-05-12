@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portfolio Animation</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICON -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(135deg,#020617,#0f172a,#111827);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      padding:20px 10%;
+      position:fixed;
+      top:0;
+      left:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    header h1{
+      color:#38bdf8;
+      font-size:30px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:80px;
+      padding:120px 10%;
+      flex-wrap:wrap;
+    }
+
+    .hero-img{
+      animation:float 3s ease-in-out infinite;
+    }
+
+    .hero-img img{
+      width:320px;
+      height:320px;
+      object-fit:cover;
+      border-radius:50%;
+      border:6px solid #38bdf8;
+      box-shadow:0 0 40px #38bdf8;
+      transition:.5s;
+    }
+
+    .hero-img img:hover{
+      transform:scale(1.05) rotate(2deg);
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-20px);
+      }
+
+      100%{
+        transform:translateY(0);
+      }
+    }
+
+    .hero-text{
+      max-width:600px;
+      animation:slideRight 1.5s ease;
+    }
+
+    @keyframes slideRight{
+      from{
+        opacity:0;
+        transform:translateX(-100px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    .hero-text h2{
+      font-size:65px;
+      margin-bottom:10px;
+    }
+
+    .hero-text span{
+      color:#38bdf8;
+    }
+
+    /* .typing{
+      font-size:28px;
+      color:#38bdf8;
+      overflow:hidden;
+      white-space:nowrap;
+      border-right:3px solid #38bdf8;
+      width:0;
+      animation:typing 4s steps(30,end) forwards,
+      blink .8s infinite;
+      margin-bottom:20px;
+    } */
+
+    @keyframes typing{
+      from{
+        width:0;
+      }
+
+      to{
+        width:100%;
+      }
+    }
+
+    @keyframes blink{
+      50%{
+        border-color:transparent;
+      }
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#38bdf8;
+      color:white;
+      text-decoration:none;
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(56,189,248,.5);
+      transition:.4s;
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      background:#0ea5e9;
+      box-shadow:0 0 30px #38bdf8;
+    }
+
+    /* SOCIAL */
+
+    .social{
+      margin-top:30px;
+    }
+
+    .social a{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      width:45px;
+      height:45px;
+      border:2px solid #38bdf8;
+      border-radius:50%;
+      color:#38bdf8;
+      margin-right:15px;
+      text-decoration:none;
+      transition:.4s;
+      font-size:20px;
+    }
+
+    .social a:hover{
+      background:#38bdf8;
+      color:white;
+      transform:translateY(-8px);
+      box-shadow:0 0 20px #38bdf8;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:45px;
+      margin-bottom:50px;
+      color:#38bdf8;
+    }
+
+    /* SKILLS */
+
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill{
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      transition:.5s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .skill:hover{
+      transform:translateY(-15px);
+      box-shadow:0 0 25px rgba(56,189,248,.4);
+    }
+
+    .skill i{
+      font-size:45px;
+      margin-bottom:20px;
+      color:#38bdf8;
+    }
+
+    /* PROJECT */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .project-card{
+      background:rgba(255,255,255,0.05);
+      padding:30px;
+      border-radius:20px;
+      backdrop-filter:blur(10px);
+      transition:.5s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .project-card:hover{
+      transform:scale(1.05);
+      box-shadow:0 0 25px rgba(56,189,248,.5);
+    }
+
+    .project-card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+      line-height:2.5;
+      color:#cbd5e1;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#020617;
+      color:#94a3b8;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-text h2{
+        font-size:45px;
+      }
+
+      .typing{
+        font-size:22px;
+      }
+
+      .hero-img img{
+        width:230px;
+        height:230px;
+      }
+
+      header{
+        flex-direction:column;
+      }
+
+      nav{
+        margin-top:15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <h1>Portfolio</h1>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-img">
+
+      <!-- GANTI FOTO -->
+      <img src="raflly.jpg.jpeg" alt="Muhammad Raflly">
+
+    </div>
+
+    <div class="hero-text">
+
+      <h2><span>Muhammad Raflly</span></h2>
+
+      <h3 class="typing">
+      Cyber Security
+      </h3>
+
+      <p>
+      </p>
+
+      <a href="#projects" class="btn">
+        Lihat Project
+      </a>
+
+      <!-- SOCIAL -->
+
+      <div class="social">
+
+        <a href="https://www.instagram.com/">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/">
+          <i class="fab fa-tiktok"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="title">About Me</h2>
+
+    <p style="text-align:center; color:#cbd5e1; line-height:2;">
+      Saya adalah Muhammad Raflly, seorang pemula yang memiliki minat besar di bidang 
+Web Development dan Cyber Security. Saya senang mempelajari teknologi baru, 
+membuat tampilan website modern, serta mengembangkan kemampuan dalam dunia digital. 
+Saya memiliki semangat belajar tinggi, suka mengeksplorasi hal baru, dan terus 
+berusaha meningkatkan skill di bidang programming dan keamanan siber.
+    </p>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2 class="title">Skills</h2>
+
+    <div class="skills-container">
+
+      <div class="skill">
+        <i class="fab fa-html5"></i>
+        <h3>HTML</h3>
+      </div>
+
+      <div class="skill">
+        <i class="fab fa-css3-alt"></i>
+        <h3>CSS</h3>
+      </div>
+
+      <div class="skill">
+        <i class="fab fa-js"></i>
+        <h3>JavaScript</h3>
+      </div>
+      <a href="https://jayantasiber.id/" style="text-decoration:none; color:white;">
+        <div class="skill">
+        <i class="fas fa-shield-halved"></i>
+        <h3>Cyber Security</h3>
+      </div>
+    </a>
+
+      
+    </div>
+
+  </section>
+
+  <!-- PROJECT -->
+
+  <section id="projects">
+
+    <h2 class="title">Projects</h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Website portfolio modern dengan animasi full.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Landing Page</h3>
+        <p>Landing page responsive dan elegan.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Cyber Notes</h3>
+        <p>Catatan pembelajaran cyber security.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2 class="title">Contact</h2>
+
+    <div class="contact">
+
+      <p>Email : raflly.a.k.raflly@gmail.com</p>
+      <p>Instagram : @muhammad_raffly_a</p>
+      <p>WhatsApp : 085817569014</p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Muhammad Raflly | All Rights Reserved
+  </footer>
+
+</body>
+</html>
